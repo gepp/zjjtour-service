@@ -22,23 +22,23 @@ public class SecurityMenuServiceImpl extends BaseServiceImpl implements ISecurit
 
     @Override
     public List<Map<String, Object>> getMenuByParentId(String pid)  {
-        DbKit dbKit = new DbKit("select * from security_menu  where parent_id='" + pid + "' order by orderlist asc");
+        DbKit dbKit = new DbKit("select * from security_menu  where parent_id='" + pid + "' and type in (0,1) order by orderlist asc");
         List<Map<String, Object>> categoryList = dalClient.queryForObjectList(dbKit);
         return categoryList;
     }
     
     @Override
-    public List<Map<String, Object>> getMenuByParentIdColumn(String pid)  {
-        DbKit dbKit = new DbKit("select * from security_menu  where parent_id='" + pid + "' and type='1' order by orderlist asc");
+    public List<Map<String, Object>> getMenuByParentIdColumn(String pid,String type)  {
+        DbKit dbKit = new DbKit("select * from security_menu  where parent_id='" + pid + "' and type='"+type+"' order by orderlist asc");
         List<Map<String, Object>> categoryList = dalClient.queryForObjectList(dbKit);
         return categoryList;
     }
     
     
     @Override
-    public List<Map<String, Object>> getMenuListByParentIdColumn(String pid)  {
+    public List<Map<String, Object>> getMenuListByParentIdColumn(String pid,String type)  {
         List returnList = new ArrayList<Map<String, Object>>();
-        List menuList = getMenuByParentIdColumn(pid);
+        List menuList = getMenuByParentIdColumn(pid,type);
         for (int i = 0; i < menuList.size(); i++) {
             Map map = (HashMap<String, Object>) menuList.get(i);
             returnList.add(map);
@@ -48,9 +48,9 @@ public class SecurityMenuServiceImpl extends BaseServiceImpl implements ISecurit
                 leftStr = leftStr + leftStr;
             }
             // String span="<span style=\"margin-left:"+leftStr+"px;\"></span>";
-            if (getMenuByParentId(map.get("id") + "").size() > 0) {
+            if (getMenuListByParentIdColumn(map.get("id") + "",type).size() > 0) {
                 k = k + 1;
-                List returnListChild = getMenuByParentIdColumn(map.get("id") + "");
+                List returnListChild = getMenuByParentIdColumn(map.get("id") + "",type);
                 for (int j = 0; j < returnListChild.size(); j++) {
                     Map childmap = (HashMap) returnListChild.get(j);
                     childmap.put("name", leftStr + childmap.get("name"));

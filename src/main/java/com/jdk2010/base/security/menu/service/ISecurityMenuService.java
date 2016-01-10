@@ -12,8 +12,8 @@ public interface ISecurityMenuService extends IBaseService {
     public List<Map<String, Object>> getMenuListByParentId(String pid) ;
     
     
-    public List<Map<String, Object>> getMenuByParentIdColumn(String pid) ;
+    public List<Map<String, Object>> getMenuByParentIdColumn(String pid,String type) ;
 
-    public List<Map<String, Object>> getMenuListByParentIdColumn(String pid) ;
+    public List<Map<String, Object>> getMenuListByParentIdColumn(String pid,String type) ;
     
 }

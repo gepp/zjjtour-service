@@ -26,10 +26,10 @@
 			</list>
 		</property>
 	</bean>
-	<bean id="ehCacheCacheManager"
+<!-- 	<bean id="ehCacheCacheManager"
 		class="com.jdk2010.framework.dal.cache.support.ehcache.EhCacheCacheManager">
 		<property name="cacheConfigLocation" value="conf/ehCache/ehcache.xml" />
-	</bean>
+	</bean> -->
 	<bean id="dataSourceMysql" class="com.alibaba.druid.pool.DruidDataSource"
 		destroy-method="close">
 		<property name="driverClassName">
