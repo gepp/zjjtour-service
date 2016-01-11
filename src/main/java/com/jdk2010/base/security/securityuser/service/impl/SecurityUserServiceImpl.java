@@ -73,7 +73,7 @@ public class SecurityUserServiceImpl extends BaseServiceImpl implements ISecurit
         List<Map<String, Object>> firstMenuList = securityMenuService.getMenuByParentId("0");
         Map<String, Object> userMenuMap = new HashMap<String, Object>();
         for (SecurityUserRole userRole : userRoleList) {
-            List<SecurityRoleMenu> roleMenuList = securityRoleMenuService.getSecurityRoleMenuByRoleId(userRole.getId());
+            List<SecurityRoleMenu> roleMenuList = securityRoleMenuService.getSecurityRoleMenuByRoleId(userRole.getRoleId());
             for (SecurityRoleMenu roleMenu : roleMenuList) {
                 userMenuMap.put(roleMenu.getMenuId() + "", roleMenu.getMenuId());
             }
@@ -150,15 +150,37 @@ public class SecurityUserServiceImpl extends BaseServiceImpl implements ISecurit
         String contextpath = RequestUtil.getRequest().getContextPath();
         Map<Object, Object> userMenuMap = getUserMenu(user);
         for (Object obj : userMenuMap.keySet()) {
-
             Map<String, Object> parentMap = (Map<String, Object>) obj;
             menuStr = menuStr + "<dd><div class=\"title\"><span><img src=\"" + contextpath + parentMap.get("img")
                     + "\" /></span>" + parentMap.get("name") + "</div><ul class=\"menuson\">";
             List<Map<String, Object>> list = (List<Map<String, Object>>) userMenuMap.get(obj);
             for (int i = 0; i < list.size(); i++) {
                 Map<String, Object> secondMap = (Map<String, Object>) list.get(i);
-                menuStr = menuStr + "<li><cite></cite><a href=\"" + contextpath + "" + secondMap.get("url")
-                        + "\" target=\"rightFrame\">" + secondMap.get("name") + "</a><i></i></li>";
+                Integer type = (Integer) secondMap.get("type");
+
+                if (type == 0) {
+                    menuStr = menuStr + "<li><cite></cite><a href=\"" + contextpath + "" + secondMap.get("url")
+                            + "\" target=\"rightFrame\">" + secondMap.get("name") + "</a><i></i></li>";
+                } else if (type == 1) {
+                    String column_type = (String) secondMap.get("column_type");
+                    if (column_type.equals("1")) {
+                        menuStr = menuStr + "<li><cite></cite><a href=\"" + contextpath + "/securitynews/list.htm?id="
+                                + secondMap.get("id") + "\" target=\"rightFrame\">" + secondMap.get("name")
+                                + "</a><i></i></li>";
+
+                    } else if (column_type.equals("2")) {
+                        menuStr = menuStr + "<li><cite></cite><a href=\"" + contextpath
+                                + "/securitynews/modifyDetail.htm?menuId=" + secondMap.get("id")
+                                + "\" target=\"rightFrame\">" + secondMap.get("name") + "</a><i></i></li>";
+                    } else {
+                        menuStr = menuStr + "<li><cite></cite>" + secondMap.get("name") + "<i></i></li>";
+
+                    }
+
+                } else {
+                    menuStr = menuStr + "<li><cite></cite><a href=\"" + contextpath + "" + secondMap.get("url")
+                            + "\" target=\"rightFrame\">" + secondMap.get("name") + "</a><i></i></li>";
+                }
             }
             menuStr = menuStr + "</ul></dd>";
         }
