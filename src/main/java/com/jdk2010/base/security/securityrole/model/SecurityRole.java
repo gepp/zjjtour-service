@@ -54,4 +54,16 @@ public class SecurityRole extends Model<SecurityRole> {
 		public void setStatus(Integer status) {
 			this.status = status;
 		}
+		
+		private String type;
+
+		@TableField
+		public String getType() {
+			return type;
+		}
+		public void setType(String type) {
+			this.type = type;
+		}
+		
+		
     }
