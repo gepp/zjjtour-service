@@ -126,5 +126,16 @@ public class SecurityMenu extends Model<SecurityMenu> {
         this.pageType = pageType;
     }
     
+    private String canSearch;
+
+    @TableField
+	public String getCanSearch() {
+		return canSearch;
+	}
+
+	public void setCanSearch(String canSearch) {
+		this.canSearch = canSearch;
+	}
+    
     
 }

@@ -18,4 +18,7 @@ public interface ISecurityUserService extends IBaseService {
     public Map<Object, Object>  getUserMenu(SecurityUser user);
     
     public String  getUserMenuStr(SecurityUser user);
+    
+     
+    
 }

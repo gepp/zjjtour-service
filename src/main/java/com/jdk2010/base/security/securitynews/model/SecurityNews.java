@@ -222,5 +222,17 @@ public class SecurityNews extends Model<SecurityNews> {
     public void setIndexStatus(String indexStatus) {
         this.indexStatus = indexStatus;
     }
+    
+    private String reviewName;
+
+	public String getReviewName() {
+		return reviewName;
+	}
+
+	public void setReviewName(String reviewName) {
+		this.reviewName = reviewName;
+	}
+    
+    
 
 }
