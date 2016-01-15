@@ -144,4 +144,31 @@ public class MemberComplain extends Model<MemberComplain> {
 		public void setReviewMessage(String reviewMessage) {
 			this.reviewMessage = reviewMessage;
 		}
+		
+		private String complainTitle;
+
+		@TableField
+        public String getComplainTitle() {
+            return complainTitle;
+        }
+        public void setComplainTitle(String complainTitle) {
+            this.complainTitle = complainTitle;
+        }
+        
+        private String replayName;
+        private String reviewName;
+
+        public String getReplayName() {
+            return replayName;
+        }
+        public void setReplayName(String replayName) {
+            this.replayName = replayName;
+        }
+        public String getReviewName() {
+            return reviewName;
+        }
+        public void setReviewName(String reviewName) {
+            this.reviewName = reviewName;
+        }
+        
     }

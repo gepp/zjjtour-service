@@ -254,4 +254,15 @@ public class MemberActivity extends Model<MemberActivity> {
 		public void setEndTime(Date endTime) {
 			this.endTime = endTime;
 		}
+		
+		private Integer usercount;
+
+		@TableField
+        public Integer getUsercount() {
+            return usercount;
+        }
+        public void setUsercount(Integer usercount) {
+            this.usercount = usercount;
+        }
+		
     }

@@ -84,4 +84,15 @@ public class Member extends Model<Member> {
 		public void setCtime(Date ctime) {
 			this.ctime = ctime;
 		}
+		
+		private String memberpwd;
+
+		@TableField
+        public String getMemberpwd() {
+            return memberpwd;
+        }
+        public void setMemberpwd(String memberpwd) {
+            this.memberpwd = memberpwd;
+        }
+		
     }
