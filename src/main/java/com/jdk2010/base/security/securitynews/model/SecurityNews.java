@@ -244,6 +244,49 @@ public class SecurityNews extends Model<SecurityNews> {
         this.menuName = menuName;
     }
     
+    private String newsType;
+    private String outStatus;
+    private String outJs;
+
+    @TableField
+    public String getNewsType() {
+        return newsType;
+    }
+
+    public void setNewsType(String newsType) {
+        this.newsType = newsType;
+    }
+
+    @TableField
+    public String getOutStatus() {
+        return outStatus;
+    }
+
+    public void setOutStatus(String outStatus) {
+        this.outStatus = outStatus;
+    }
+
+    @TableField
+    public String getOutJs() {
+        return outJs;
+    }
+
+    public void setOutJs(String outJs) {
+        this.outJs = outJs;
+    }
+    
+    private String videoUrl;
+
+    @TableField
+    public String getVideoUrl() {
+        return videoUrl;
+    }
+
+    public void setVideoUrl(String videoUrl) {
+        this.videoUrl = videoUrl;
+    }
+    
+    
     
     
     
