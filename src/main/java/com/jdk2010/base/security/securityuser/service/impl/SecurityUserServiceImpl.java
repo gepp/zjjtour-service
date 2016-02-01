@@ -201,7 +201,7 @@ ISecurityUserService {
 			}
 			Map<String, Object> parentMap = (Map<String, Object>) obj;
 			menuStr = menuStr + "<dd><div class=\"title\"><span><img src=\""
-					+ contextpath + parentMap.get("img") + "\" /></span>"
+					+ contextpath + "/res/images/leftico01.png" + "\" /></span>"
 					+ parentMap.get("name") + "</div><ul class=\"menuson\">";
 			List<Map<String, Object>> list = (List<Map<String, Object>>) userMenuMap
 					.get(obj);

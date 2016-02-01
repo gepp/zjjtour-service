@@ -137,5 +137,16 @@ public class SecurityMenu extends Model<SecurityMenu> {
 		this.canSearch = canSearch;
 	}
     
+	private Integer bannerId;
+
+	@TableField
+    public Integer getBannerId() {
+        return bannerId;
+    }
+
+    public void setBannerId(Integer bannerId) {
+        this.bannerId = bannerId;
+    }
+	
     
 }

@@ -29,7 +29,7 @@ public class SecurityMenuServiceImpl extends BaseServiceImpl implements ISecurit
     
     @Override
     public List<Map<String, Object>> getMenuByParentIdColumn(String pid,String type)  {
-        DbKit dbKit = new DbKit("select * from security_menu  where parent_id='" + pid + "' and type='"+type+"' order by orderlist asc");
+        DbKit dbKit = new DbKit("select * from security_menu  where parent_id='" + pid + "' and type='"+type+"' order by banner_id asc, orderlist asc");
         List<Map<String, Object>> categoryList = dalClient.queryForObjectList(dbKit);
         return categoryList;
     }
