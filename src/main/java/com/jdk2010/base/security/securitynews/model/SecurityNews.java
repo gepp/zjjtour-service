@@ -286,6 +286,16 @@ public class SecurityNews extends Model<SecurityNews> {
         this.videoUrl = videoUrl;
     }
     
+    private String maodianStatus;
+
+    @TableField
+    public String getMaodianStatus() {
+        return maodianStatus;
+    }
+
+    public void setMaodianStatus(String maodianStatus) {
+        this.maodianStatus = maodianStatus;
+    }
     
     
     
