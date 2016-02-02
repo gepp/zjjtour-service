@@ -297,6 +297,16 @@ public class SecurityNews extends Model<SecurityNews> {
         this.maodianStatus = maodianStatus;
     }
     
+    private String quanjingUrl;
+
+    @TableField
+	public String getQuanjingUrl() {
+		return quanjingUrl;
+	}
+
+	public void setQuanjingUrl(String quanjingUrl) {
+		this.quanjingUrl = quanjingUrl;
+	}
     
     
     
