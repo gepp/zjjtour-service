@@ -307,7 +307,30 @@ public class SecurityNews extends Model<SecurityNews> {
 	public void setQuanjingUrl(String quanjingUrl) {
 		this.quanjingUrl = quanjingUrl;
 	}
+	
+	private String keywords;
+
+	
+	@TableField
+	public String getKeywords() {
+		return keywords;
+	}
+
+	public void setKeywords(String keywords) {
+		this.keywords = keywords;
+	}
     
+	
+	private int readtotal;
+
+	@TableField
+	public int getReadtotal() {
+		return readtotal;
+	}
+
+	public void setReadtotal(int readtotal) {
+		this.readtotal = readtotal;
+	}
     
     
 
