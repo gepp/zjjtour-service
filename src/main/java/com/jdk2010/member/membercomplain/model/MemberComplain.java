@@ -32,8 +32,18 @@ public class MemberComplain extends Model<MemberComplain> {
     	private Date reviewTime;
         	/* 审核意见 */
     	private String reviewMessage;
+    	
+    	private String memberImg;
+    	
              	 
-  		@TableField
+    	@TableField
+  		public String getMemberImg() {
+			return memberImg;
+		}
+		public void setMemberImg(String memberImg) {
+			this.memberImg = memberImg;
+		}
+		@TableField
 		public Integer getId() {
 			return id;
 		}

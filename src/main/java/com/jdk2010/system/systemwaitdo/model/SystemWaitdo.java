@@ -84,4 +84,14 @@ public class SystemWaitdo extends Model<SystemWaitdo> {
 		public void setTargetId(Integer targetId) {
 			this.targetId = targetId;
 		}
+		
+		private Integer parentId;
+
+		public Integer getParentId() {
+			return parentId;
+		}
+		public void setParentId(Integer parentId) {
+			this.parentId = parentId;
+		}
+		
     }

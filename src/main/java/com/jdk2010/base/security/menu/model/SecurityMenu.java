@@ -148,5 +148,16 @@ public class SecurityMenu extends Model<SecurityMenu> {
         this.bannerId = bannerId;
     }
 	
+    private String code;
+
+    @TableField
+	public String getCode() {
+		return code;
+	}
+
+	public void setCode(String code) {
+		this.code = code;
+	}
+    
     
 }

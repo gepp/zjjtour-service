@@ -31,7 +31,7 @@ import com.jdk2010.framework.util.DbKit;
 
 @Service("securityUserService")
 public class SecurityUserServiceImpl extends BaseServiceImpl implements
-ISecurityUserService {
+		ISecurityUserService {
 	@Resource
 	DalClient dalClient;
 
@@ -97,8 +97,8 @@ ISecurityUserService {
 				SecurityRole role = securityRoleService.findById(
 						roleMenu.getRoleId(), SecurityRole.class);
 
-				if(role!=null){
-					if(menu!=null){
+				if (role != null) {
+					if (menu != null) {
 						if ("1".equals(menu.getType())) {
 							if (role.getType().equals("1")) {
 								shenheFlag = "1";
@@ -111,7 +111,7 @@ ISecurityUserService {
 				}
 
 				userMenuMap
-				.put(roleMenu.getMenuId() + "", roleMenu.getMenuId());
+						.put(roleMenu.getMenuId() + "", roleMenu.getMenuId());
 			}
 		}
 
@@ -201,8 +201,9 @@ ISecurityUserService {
 			}
 			Map<String, Object> parentMap = (Map<String, Object>) obj;
 			menuStr = menuStr + "<dd><div class=\"title\"><span><img src=\""
-					+ contextpath + "/res/images/leftico01.png" + "\" /></span>"
-					+ parentMap.get("name") + "</div><ul class=\"menuson\">";
+					+ contextpath + "/res/images/leftico01.png"
+					+ "\" /></span>" + parentMap.get("name")
+					+ "</div><ul class=\"menuson\">";
 			List<Map<String, Object>> list = (List<Map<String, Object>>) userMenuMap
 					.get(obj);
 			for (int i = 0; i < list.size(); i++) {
@@ -210,7 +211,7 @@ ISecurityUserService {
 						.get(i);
 				Integer type = (Integer) secondMap.get("type");
 
-				if (type == 0) {
+				if (type == 0 || type == 3) {
 					menuStr = menuStr + "<li><cite></cite><a href=\""
 							+ contextpath + "" + secondMap.get("url")
 							+ "\" target=\"rightFrame\">"

@@ -19,6 +19,18 @@ public class SystemAdv extends Model<SystemAdv> {
 	private Integer orderlist;
 	/* 是否启用 */
 	private Integer status;
+	
+	private String jumpWapUrl;
+	
+
+	@TableField
+	public String getJumpWapUrl() {
+		return jumpWapUrl;
+	}
+
+	public void setJumpWapUrl(String jumpWapUrl) {
+		this.jumpWapUrl = jumpWapUrl;
+	}
 
 	@TableField
 	public Integer getId() {

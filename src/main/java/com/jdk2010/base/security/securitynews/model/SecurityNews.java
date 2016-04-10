@@ -332,6 +332,17 @@ public class SecurityNews extends Model<SecurityNews> {
 		this.readtotal = readtotal;
 	}
     
+	private String newsFrom;
+
+	@TableField
+	public String getNewsFrom() {
+		return newsFrom;
+	}
+
+	public void setNewsFrom(String newsFrom) {
+		this.newsFrom = newsFrom;
+	}
+	
     
 
 }
