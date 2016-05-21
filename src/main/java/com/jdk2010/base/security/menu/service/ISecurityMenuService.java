@@ -16,4 +16,7 @@ public interface ISecurityMenuService extends IBaseService {
 
     public List<Map<String, Object>> getMenuListByParentIdColumn(String pid,String type) ;
     
+    
+    public Map<String, List<Map<String, Object>>> getBqList();
+    
 }

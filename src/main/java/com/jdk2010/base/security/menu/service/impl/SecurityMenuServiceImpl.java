@@ -2,6 +2,7 @@ package com.jdk2010.base.security.menu.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
 
+import com.jdk2010.base.security.menu.model.SecurityMenu;
 import com.jdk2010.base.security.menu.service.ISecurityMenuService;
 import com.jdk2010.base.service.BaseServiceImpl;
 import com.jdk2010.framework.dal.client.DalClient;
@@ -89,6 +91,38 @@ public class SecurityMenuServiceImpl extends BaseServiceImpl implements ISecurit
         }
         return returnList;
     }
+
+	@Override
+	public Map<String, List<Map<String, Object>>> getBqList() {
+		Map<String, List<Map<String, Object>>> linkedMenuNameList = new LinkedHashMap<String, List<Map<String, Object>>>();
+		List<Map<String, Object>> menuList = getMenuListByParentIdColumn("0", "2");
+
+		HashMap<String, Object> linkedMenuList = new LinkedHashMap<String, Object>();
+		for (Map<String, Object> child : menuList) {
+			if (child.get("banner_id") != null) {
+				linkedMenuList.put(child.get("banner_id") + "", null);
+			}
+		}
+
+		
+
+		for (String key : linkedMenuList.keySet()) {
+			List<Map<String, Object>> childList = new ArrayList<Map<String, Object>>();
+			for (Map<String, Object> child : menuList) {
+				if (child.get("banner_id") != null) {
+					if ((child.get("banner_id")+"").equals(key)) {
+						childList.add(child);
+					}
+				}
+			}
+			SecurityMenu menu = findById(key,
+					SecurityMenu.class);
+			if (menu != null) {
+				linkedMenuNameList.put(menu.getName(), childList);
+			}
+		}
+		return linkedMenuNameList;
+	}
 
  
 }

@@ -218,25 +218,41 @@ public class SecurityUserServiceImpl extends BaseServiceImpl implements
 							+ secondMap.get("name") + "</a><i></i></li>";
 				} else if (type == 1) {
 					String column_type = (String) secondMap.get("column_type");
-					if (column_type.equals("1")) {
+					Integer parent_id=(Integer) secondMap.get("parent_id");
+					if(parent_id==1133){
 						menuStr = menuStr + "<li><cite></cite><a href=\""
-								+ contextpath + "/securitynews/list.htm?id="
+								+ contextpath + "/securitynews/toViedoList.htm?bannerMenuId="
 								+ secondMap.get("id")
-								+ "\" target=\"rightFrame\">"
+								+"\" target=\"rightFrame\">"
 								+ secondMap.get("name") + "</a><i></i></li>";
+					}else{
+						if (column_type.equals("1")) {
+							Object url=secondMap.get("url");
+							if(url==null){
+								url=contextpath + "/securitynews/list.htm?id="
+										+ secondMap.get("id");
+							}else{
+								url=contextpath + url;
+							}
+							menuStr = menuStr + "<li><cite></cite><a href=\""+
+									url
+									+ "\" target=\"rightFrame\">"
+									+ secondMap.get("name") + "</a><i></i></li>";
 
-					} else if (column_type.equals("2")) {
-						menuStr = menuStr + "<li><cite></cite><a href=\""
-								+ contextpath
-								+ "/securitynews/modifyDetail.htm?menuId="
-								+ secondMap.get("id")
-								+ "\" target=\"rightFrame\">"
-								+ secondMap.get("name") + "</a><i></i></li>";
-					} else {
-						menuStr = menuStr + "<li><cite></cite>"
-								+ secondMap.get("name") + "<i></i></li>";
+						} else if (column_type.equals("2")) {
+							menuStr = menuStr + "<li><cite></cite><a href=\""
+									+ contextpath
+									+ "/securitynews/modifyDetail.htm?menuId="
+									+ secondMap.get("id")
+									+ "\" target=\"rightFrame\">"
+									+ secondMap.get("name") + "</a><i></i></li>";
+						} else {
+							menuStr = menuStr + "<li><cite></cite>"
+									+ secondMap.get("name") + "<i></i></li>";
 
+						}
 					}
+					
 
 				} else {
 					menuStr = menuStr + "<li><cite></cite><a href=\""
